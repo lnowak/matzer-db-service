@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- Pattern to output the caller's file name and line number -->
+			<param name="ConversionPattern" value="%d{DATE} [%t] %p %c:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="database-api" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="./logs/database-api.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<!-- Keep one backup file -->
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{DATE} [%t] %p %c:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="hibernate" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="./logs/hibernate.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<!-- Keep one backup file -->
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{DATE} [%t] %p %c:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="springframework" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="./logs/springframework.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<!-- Keep one backup file -->
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{DATE} [%t] %p %c:%L - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="jboss" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="./logs/jboss.log" />
+		<param name="MaxFileSize" value="100MB" />
+		<!-- Keep one backup file -->
+		<param name="MaxBackupIndex" value="1" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{DATE} [%t] %p %c:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="com.matzer.db">
+		<level value="debug" />
+		<appender-ref ref="database-api" />
+		<appender-ref ref="stdout" />
+	</logger>
+	
+	<logger name="org.hibernate">
+		<level value="error" />
+		<appender-ref ref="hibernate" />
+		<appender-ref ref="stdout" />
+	</logger>
+	
+	<logger name="java.sql">
+		<level value="error" />
+		<appender-ref ref="hibernate" />
+		<appender-ref ref="stdout" />
+	</logger>
+	
+	<logger name="net.sf.ehcache">
+		<level value="error" />
+		<appender-ref ref="hibernate" />
+		<appender-ref ref="stdout" />
+	</logger>
+	
+	<logger name="org.springframework">
+		<level value="error" />
+		<appender-ref ref="springframework" />
+		<appender-ref ref="stdout" />
+	</logger>
+	
+	<logger name="org.jboss.logging">
+		<level value="error" />
+		<appender-ref ref="jboss" />
+		<appender-ref ref="stdout" />
+	</logger>
+</log4j:configuration>

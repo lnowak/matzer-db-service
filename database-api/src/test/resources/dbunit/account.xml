@@ -1,0 +1,5 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/dbunit/account.dtd">
+<dataset>
+	<account id="1" login="homer" password="homer123" email="lukasz.nowak@homersoft.com" is_admin="true" />
+	<account id="2" login="lnowak" password="homer123" email="lukasz.nowak@homersoft.com" is_admin="false" />
+</dataset>

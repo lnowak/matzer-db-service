@@ -1,0 +1,11 @@
+<!ELEMENT dataset (
+	server_instance*
+)>
+ 
+<!ELEMENT server_instance EMPTY>
+<!ATTLIST server_instance
+	id 					CDATA #REQUIRED
+	name 				CDATA #REQUIRED
+	uuid	 			CDATA #REQUIRED
+	account_id 			CDATA #REQUIRED
+  >

@@ -1,0 +1,94 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>matzer-db-service</artifactId>
+		<groupId>com.matzer.db</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<name>Distribution</name>
+	<artifactId>distribution</artifactId>
+	<version>1.0.0-SNAPSHOT</version>	
+
+	<packaging>pom</packaging>
+
+	<build>
+		<plugins>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<tasks>
+								<delete dir="${basedir}/target" />
+								<delete>
+									<fileset dir="${basedir}" includes="*.zip" />
+								</delete>
+								<copy todir="${basedir}/target">
+									<fileset dir="${basedir}/scripts" />
+								</copy>
+								<copy todir="${basedir}/target/lib">
+									<fileset dir="${basedir}/../commons/target">
+										<include name="commons*.jar" />
+									</fileset>
+									<fileset dir="${basedir}/../database-dao/target">
+										<include name="database-dao*.jar" />
+									</fileset>
+									<fileset dir="${basedir}/../database-api/target">
+										<include name="database-api*.jar" />
+									</fileset>
+								</copy>										
+								<copy todir="${basedir}/target/lib/dependencies">
+									<fileset dir="${basedir}/../database-api/target/dependencies">
+										<include name="*.jar" />
+										<exclude name="commons-1*.jar" />
+										<exclude name="commons-api-1*.jar" />
+										<exclude name="database-dao-1*.jar" />
+										<exclude name="database-api-1*.jar" />
+									</fileset>								
+								</copy>
+								<copy todir="${basedir}/target/config">
+									<fileset dir="${basedir}/../database-api/src/test/resources">
+										<include name="spring-config-*.xml" />
+										<include name="log4j.xml" />
+										<include name="commons-logging.properties" />
+									</fileset>
+								</copy>
+								<zip
+									destfile="${basedir}/matzer-db-service-${project.version}.zip"
+									basedir="${basedir}/target" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>			
+		</plugins>
+	</build>
+
+	<dependencies>		
+		<dependency>
+			<groupId>org.codehaus.groovy.maven.runtime</groupId>
+			<artifactId>gmaven-runtime-1.6</artifactId>
+			<version>1.0-rc-5</version>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+
+</project>

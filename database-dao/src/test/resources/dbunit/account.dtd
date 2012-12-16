@@ -1,0 +1,20 @@
+<!ELEMENT dataset (
+	account*
+)>
+ 
+<!ELEMENT account EMPTY>
+<!ATTLIST account
+	id 					CDATA #REQUIRED
+	type				CDATA #REQUIRED
+	first_name			CDATA #REQUIRED
+	last_name			CDATA #REQUIRED
+	gender				CDATA #REQUIRED
+	province			CDATA #REQUIRED
+	city				CDATA #REQUIRED
+	birth_date			CDATA #REQUIRED
+	email				CDATA #REQUIRED
+	password			CDATA #REQUIRED
+	facebook_id			CDATA #REQUIRED
+	creation_date		CDATA #REQUIRED
+	modification_date	CDATA #REQUIRED
+  >
