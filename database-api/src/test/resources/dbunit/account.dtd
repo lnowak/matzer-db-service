@@ -18,4 +18,5 @@
 	creation_date		CDATA #REQUIRED
 	modification_date	CDATA #REQUIRED
 	is_active			CDATA #REQUIRED
+	language			CDATA #REQUIRED
 >

@@ -84,7 +84,7 @@ public class AuthenticationServiceTest extends AbstractDbUnitTests {
 		IAuthenticationService authorizationService = JaxRsCommons.getService(IAuthenticationService.class);
 		
 		// when
-		DataResponse<SecurityToken> response = authorizationService.getToken("lkawon@gmail.com", "test");
+		DataResponse<SecurityToken> response = authorizationService.getToken("admin@matzer.pl", "test");
 		
 		// then
 		Assert.assertNotNull(response);
@@ -101,7 +101,7 @@ public class AuthenticationServiceTest extends AbstractDbUnitTests {
 		IAuthenticationService authorizationService = JaxRsCommons.getService(IAuthenticationService.class);
 					
 		// when
-		DataResponse<SecurityToken> response = authorizationService.getToken("lkawon@gmail.com", "password");		
+		DataResponse<SecurityToken> response = authorizationService.getToken("admin@matzer.pl", "password");		
 		
 		// then
 		Assert.assertNotNull(response);

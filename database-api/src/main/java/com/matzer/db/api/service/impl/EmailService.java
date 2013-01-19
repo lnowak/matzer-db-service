@@ -35,6 +35,7 @@ public class EmailService implements IEmailService {
 	/**
 	 * SMTP client.
 	 */
+	@Autowired
 	private ISmtpClient smtpClient;
 	
 	/**

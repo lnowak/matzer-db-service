@@ -76,6 +76,14 @@
   	    <property name="authorization" value="true" />
   	</bean>
   	
+  	<bean id="smtpClient" class="com.matzer.db.commons.mail.impl.SmtpClient" >
+        <property name="smtpHost" value="smtp.gmail.com" />
+        <property name="smtpPort" value="465" />
+        <property name="username" value="wihomemasterlib" />
+        <property name="password" value="Homer123" />
+        <property name="from" value="wihomemasterlib@gmail.com" />
+    </bean>
+  	
 	<bean id="mapper" class="org.dozer.DozerBeanMapper">
   		<property name="mappingFiles">
     		<list>

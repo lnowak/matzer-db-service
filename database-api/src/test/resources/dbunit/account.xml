@@ -2,14 +2,14 @@
 <dataset>
     <account id="1" type="1" first_name="Łukasz" last_name="Nowak" gender="M"	
         province="małopolskie" city="Kraków" birth_date="1982-05-01"
-		email="lkawon@gmail.com" password="5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8" 		
-		creation_date="2013-01-19 14:09:00" modification_date="2013-01-19 14:09:00" is_active="true" />
+		email="admin@matzer.pl" password="5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8" 		
+		creation_date="2013-01-19 14:09:00" modification_date="2013-01-19 14:09:00" is_active="true" language="0" />
 	<account id="2" type="2" first_name="Jan" last_name="Kowalski" gender="M"	
         province="małopolskie" city="Kraków" birth_date="1985-01-01"
 		email="jan.kowalski@gmail.com" password="5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8" 		
-		creation_date="2013-01-19 12:00:00" modification_date="2013-01-19 12:00:00" is_active="true" />
+		creation_date="2013-01-19 12:00:00" modification_date="2013-01-19 12:00:00" is_active="true" language="0" />
 	<account id="3" type="2" first_name="Jan" last_name="Kowalski" gender="M"	
         province="małopolskie" city="Kraków" birth_date="1985-01-01"
 		email="not_active@gmail.com" password="5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8" 		
-		creation_date="2013-01-19 12:00:00" modification_date="2013-01-19 12:00:00" is_active="false" />
+		creation_date="2013-01-19 12:00:00" modification_date="2013-01-19 12:00:00" is_active="false" language="0" />
 </dataset>

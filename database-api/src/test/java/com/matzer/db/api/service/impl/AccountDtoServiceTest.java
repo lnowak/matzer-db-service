@@ -68,7 +68,7 @@ public class AccountDtoServiceTest extends AbstractDbUnitTests {
 	@Test
 	public final void getAccountByEmail() {
 		// when
-		AccountDto account = accountDtoService.getAccount("lkawon@gmail.com");
+		AccountDto account = accountDtoService.getAccount("admin@matzer.pl");
 		
 		// then
 		Assert.assertNotNull(account);	
@@ -112,14 +112,14 @@ public class AccountDtoServiceTest extends AbstractDbUnitTests {
 		AccountDto account = createAccountDto(false);
 		accountDtoService.addAccount(account);
 				
-		AccountDto receivedAccount = accountDtoService.getAccount("login@test.pl");
+		AccountDto receivedAccount = accountDtoService.getAccount("lkawon@gmail.com");
 		String activationCode = receivedAccount.getActivationCode();
 		
 		// when
 		accountDtoService.activateAccount(activationCode);
 		
 		// then
-		receivedAccount = accountDtoService.getAccount("login@test.pl");
+		receivedAccount = accountDtoService.getAccount("lkawon@gmail.com");
 		Assert.assertEquals(receivedAccount.getIsActive(), new Boolean(true));
 		Assert.assertEquals(receivedAccount.getPassword(), HashUtils.generateHash(HashType.SHA, "password"));
 	}
@@ -134,14 +134,14 @@ public class AccountDtoServiceTest extends AbstractDbUnitTests {
 		accountDtoService.addAccount(account);						
 		
 		// when
-		AccountDto receivedAccount = accountDtoService.getAccount("login@test.pl");
+		AccountDto receivedAccount = accountDtoService.getAccount("lkawon@gmail.com");
 		accountDtoService.generateResetPasswordCode(receivedAccount.getEmail());
 		
-		receivedAccount = accountDtoService.getAccount("login@test.pl");
+		receivedAccount = accountDtoService.getAccount("lkawon@gmail.com");
 		accountDtoService.resetPassword(receivedAccount.getResetCode(), "new_password");
 		
 		// then
-		receivedAccount = accountDtoService.getAccount("login@test.pl");
+		receivedAccount = accountDtoService.getAccount("lkawon@gmail.com");
 		Assert.assertEquals(receivedAccount.getPassword(), HashUtils.generateHash(HashType.SHA, "new_password"));
 	}
 	
@@ -209,10 +209,10 @@ public class AccountDtoServiceTest extends AbstractDbUnitTests {
 		AccountDto account = createAccountDto(true);
 		accountDtoService.addAccount(account);
 		
-		account = accountDtoService.getAccount("login@test.pl");
+		account = accountDtoService.getAccount("lkawon@gmail.com");
 		
 		// when								
-		accountDtoService.deleteAccount("login@test.pl");
+		accountDtoService.deleteAccount("lkawon@gmail.com");
 		
 		// then
 		AccountDto receivedAccount = accountDtoService.getAccount("login");
@@ -238,8 +238,9 @@ public class AccountDtoServiceTest extends AbstractDbUnitTests {
 	private AccountDto createAccountDto(boolean active) {
 		AccountDto account = new AccountDto();
 		account.setPassword("password");
-		account.setEmail("login@test.pl");
+		account.setEmail("lkawon@gmail.com");
 		account.setIsActive(active);
+		account.setLanguage(0);
 		
 		return account;
 	}

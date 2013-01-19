@@ -58,7 +58,7 @@ public class AccountServiceTest extends AbstractDbUnitTests {
 		IAuthenticationService authenticationService = JaxRsCommons.getService(IAuthenticationService.class);
 		
 		// when
-		DataResponse<SecurityToken> response = authenticationService.getToken("lkawon@gmail.com", "password");
+		DataResponse<SecurityToken> response = authenticationService.getToken("admin@matzer.pl", "password");
 		
 		// then
 		Assert.assertNotNull(response);
@@ -75,7 +75,7 @@ public class AccountServiceTest extends AbstractDbUnitTests {
 		IAccountService accountService = JaxRsCommons.getService(IAccountService.class);
 		
 		// when
-		DataResponse<AccountDto> response = accountService.getAccount("test", "lkawon@gmail.com");
+		DataResponse<AccountDto> response = accountService.getAccount("test", "admin@matzer.pl");
 		
 		// then
 		Assert.assertNotNull(response);
@@ -92,7 +92,7 @@ public class AccountServiceTest extends AbstractDbUnitTests {
 		IAccountService accountService = JaxRsCommons.getService(IAccountService.class);
 		
 		// when
-		DataResponse<AccountDto> response = accountService.getAccount(securityToken.getToken(), "lkawon@gmail.com");
+		DataResponse<AccountDto> response = accountService.getAccount(securityToken.getToken(), "admin@matzer.pl");
 		
 		// then
 		Assert.assertEquals(response.getStatus().getErrorCode(), ErrorCode.OK.getId());

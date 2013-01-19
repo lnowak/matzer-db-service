@@ -13,11 +13,13 @@ import com.matzer.db.api.dto.object.AccountDto;
 import com.matzer.db.api.error.ErrorCode;
 import com.matzer.db.api.security.RandomCodeGenerator;
 import com.matzer.db.api.service.IAccountDtoService;
+import com.matzer.db.api.service.IEmailService;
 import com.matzer.db.api.service.exception.ApiException;
 import com.matzer.db.commons.utils.HashUtils;
 import com.matzer.db.commons.utils.HashUtils.HashType;
 import com.matzer.db.dao.IAccountDao;
 import com.matzer.db.entity.Account;
+import com.matzer.db.enums.EmailTemplateType;
 
 /**
  * 
@@ -44,6 +46,12 @@ public class AccountDtoService implements IAccountDtoService {
 	 */
 	@Autowired
 	private IAccountDao accountDao;
+	
+	/**
+	 * Email service;
+	 */
+	@Autowired
+	private IEmailService emailService;
 	
 	/**
 	 * Dozer mapper.
@@ -94,7 +102,7 @@ public class AccountDtoService implements IAccountDtoService {
 				account.setPassword(HashUtils.generateHash(HashType.SHA, account.getPassword()));
 				if (account.getIsActive() != null && !account.getIsActive()) {
 					account.setActivationCode(RandomCodeGenerator.generateCode(ACTIVATION_CODE_LENGTH));
-					//emailService.sendActivationEmail(account);
+					emailService.sendEmail(EmailTemplateType.ACTIVATION, account);
 				}														
 				
 				accountDao.save(account);
@@ -114,7 +122,7 @@ public class AccountDtoService implements IAccountDtoService {
 	public final void resendActivationEmail(String email) {
 		Account account = accountDao.findByEmail(email);
 		if (account != null) {
-			//emailService.sendActivationEmail(account);
+			emailService.sendEmail(EmailTemplateType.ACTIVATION, account);
 		} else {
 			throw new ApiException(ErrorCode.ACCOUNT_WAS_NOT_FOUND);
 		}		
@@ -150,7 +158,7 @@ public class AccountDtoService implements IAccountDtoService {
 		Account account = accountDao.findByEmail(email);
 		if (account != null) {
 			account.setResetCode(RandomCodeGenerator.generateCode(RESET_CODE_LENGTH));			
-			//emailService.sendPasswordEmail(account);						
+			emailService.sendEmail(EmailTemplateType.PASSWORD_RESET, account);			
 			
 			accountDao.save(account);
 		} else {
@@ -221,6 +229,7 @@ public class AccountDtoService implements IAccountDtoService {
 	public final void deleteAccount(String email) {
 		Account account = accountDao.findByEmail(email);
 		if (account != null) {
+			emailService.sendEmail(EmailTemplateType.ACCOUNT_REMOVAL, account);
 			accountDao.delete(account);
 		} else {
 			throw new ApiException(ErrorCode.ENTITY_NOT_FOUND);
