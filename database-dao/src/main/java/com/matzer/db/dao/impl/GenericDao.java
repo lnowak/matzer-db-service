@@ -8,8 +8,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import com.matzer.db.commons.utils.Numbers;
 import com.matzer.db.dao.IGenericDao;
-import com.matzer.db.object.utils.Numbers;
 
 /**
  * Java Persistence API implementation of abstract DAO. All DAO object should be

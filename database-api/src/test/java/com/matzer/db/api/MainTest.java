@@ -1,5 +1,7 @@
 package com.matzer.db.api;
 
+import java.util.Arrays;
+
 import org.testng.annotations.Test;
 
 /**
@@ -16,6 +18,6 @@ public class MainTest {
 	 */
 	@Test
 	public final void startApplication() {
-		Main.main(null);
+		Main.main((String[]) Arrays.asList("spring-config-hsqldb.xml").toArray());
 	}
 }

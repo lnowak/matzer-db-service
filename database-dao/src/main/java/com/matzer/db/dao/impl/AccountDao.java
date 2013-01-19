@@ -77,4 +77,31 @@ public class AccountDao extends GenericDao<Account, Long> implements IAccountDao
         
         return account;
 	}
+
+
+	/* (non-Javadoc)
+	 * @see com.matzer.db.dao.IAccountDao#findByResetCode(java.lang.String)
+	 */
+	@Override
+	public final Account findByResetCode(String resetCode) {
+		Account account;
+		
+		StringBuilder sql = new StringBuilder();
+        sql.append("SELECT e FROM ");
+        sql.append(getPersistentClass().getName());
+        sql.append(" e ");
+        sql.append("WHERE e.resetCode=?1");
+        
+        Query query = getEntityManager().createQuery(sql.toString());
+        query.setHint("org.hibernate.cacheable", true);
+        query.setParameter(1, resetCode);
+        
+        try {
+        	account = (Account) query.getSingleResult();
+        } catch (NoResultException e) {
+        	account = null;
+        }
+        
+        return account;
+	}
 }

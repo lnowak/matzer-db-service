@@ -28,7 +28,7 @@ if [ "$OPTION" = "start" ]; then
   fi
 
   cd $HOME/$PROGRAM_DIR
-  $JAVA -D$PROGRAM_NAME $JAVA_OPTS -cp $CLASSPATH com.matzer.db.api.Main &
+  $JAVA -D$PROGRAM_NAME $JAVA_OPTS -cp $CLASSPATH com.matzer.db.api.Main spring-config-mysql.xml &
   CURRPID="$!"
   echo $CURRPID > $PID
   echo "$HOME/$PROGRAM_DIR started - process number $CURRPID"

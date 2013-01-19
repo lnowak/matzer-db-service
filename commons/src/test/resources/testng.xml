@@ -2,6 +2,7 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
+        <class name="com.matzer.db.commons.utils.HashUtilsTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

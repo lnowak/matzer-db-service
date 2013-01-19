@@ -27,7 +27,7 @@ import com.matzer.db.enums.AccountType;
  *
  */
 public class AuthenticationHandler implements IAuthenticationHandler {
-
+	
 	/**
 	 * Prefix for role.
 	 */
@@ -44,14 +44,14 @@ public class AuthenticationHandler implements IAuthenticationHandler {
 	 * @see com.homersoft.wh.db.api.security.IAuthenticationHandler#authenticate(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public final void authenticate(String email, String password) {
+	public final void authenticate(String email, String password) {		
 		Account account = accountDao.findByEmail(email);
 		if (account != null) {
-			if (!account.getPassword().equals(password)) {
-				throw new AuthenticationException(ErrorCode.INVALID_PASSWORD);
+			if (!account.getPassword().equals(password) || (account.getIsActive() == null || !account.getIsActive())) {
+				throw new AuthenticationException(ErrorCode.INVALID_EMAIL_OR_PASSWORD);
 			}
 		} else {
-			throw new AuthenticationException(ErrorCode.INVALID_EMAIL);
+			throw new AuthenticationException(ErrorCode.INVALID_EMAIL_OR_PASSWORD);
 		}
 		
 	}
@@ -76,7 +76,7 @@ public class AuthenticationHandler implements IAuthenticationHandler {
 	    	Subject subject = new Subject(true, principals, new HashSet<String>(), new HashSet<String>());
 	    	return new RolePrefixSecurityContextImpl(subject, ROLE_PREFIX);			
 		} else {
-			throw new AuthenticationException(ErrorCode.INVALID_EMAIL);
+			throw new AuthenticationException(ErrorCode.INVALID_EMAIL_OR_PASSWORD);
 		}		
 	}
 }

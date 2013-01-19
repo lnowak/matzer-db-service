@@ -20,10 +20,18 @@ public interface IAccountDao extends IGenericDao<Account, Long> {
 	Account findByEmail(String email);
 	
 	/**
-	 * Finds accoutn by activation code.
+	 * Finds account by activation code.
 	 * 
 	 * @param activationCode	activation code
 	 * @return					account
 	 */
 	Account findByActivationCode(String activationCode);
+	
+	/**
+	 * Finds account by reset code.
+	 * 
+	 * @param resetCode			activation code
+	 * @return					account
+	 */
+	Account findByResetCode(String resetCode);
 }

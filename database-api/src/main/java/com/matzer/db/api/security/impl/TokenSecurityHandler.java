@@ -27,6 +27,8 @@ import com.matzer.db.api.security.IAuthenticationHandler;
 import com.matzer.db.api.security.ITokenSecurityHandler;
 import com.matzer.db.api.security.RandomCodeGenerator;
 import com.matzer.db.api.security.Unsecured;
+import com.matzer.db.commons.utils.HashUtils;
+import com.matzer.db.commons.utils.HashUtils.HashType;
 
 /**
  * 
@@ -166,9 +168,9 @@ public class TokenSecurityHandler extends AbstractPhaseInterceptor<Message> impl
 	 * @see com.homersoft.wh.db.api.security.ITokenSecurityHandler#getToken(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public final String getToken(String login, String password) {
+	public final String getToken(String login, String password) {		
 		if (authenticationHandler != null) {
-			authenticationHandler.authenticate(login, password);
+			authenticationHandler.authenticate(login, HashUtils.generateHash(HashType.SHA, password));
 		} else {
 			throw new AuthenticationException(ErrorCode.MISSING_AUTHENTICATION_HANDLER);
 		}

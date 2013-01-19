@@ -22,6 +22,7 @@
 		<version.spring>3.1.1.RELEASE</version.spring>
 		<version.dbunit>2.4.8</version.dbunit>
 		<version.slf4j>1.6.6</version.slf4j>
+		<version.javamail>1.4.5</version.javamail>
 	</properties>
 
 	<build>
@@ -254,6 +255,12 @@
 			<version>${version.log4j}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>${version.javamail}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>

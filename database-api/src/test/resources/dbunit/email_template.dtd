@@ -1,0 +1,14 @@
+<!ELEMENT dataset (
+	email_template*
+)>
+ 
+<!ELEMENT email_template EMPTY>
+<!ATTLIST email_template
+	id 					CDATA #REQUIRED
+	template_id			CDATA #REQUIRED
+	name	 			CDATA #REQUIRED
+	description			CDATA #REQUIRED
+	subject				CDATA #REQUIRED
+	text				CDATA #REQUIRED
+	is_html				CDATA #REQUIRED
+  >

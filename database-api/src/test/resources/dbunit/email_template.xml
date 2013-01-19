@@ -1,0 +1,9 @@
+<!DOCTYPE dataset SYSTEM "src/test/resources/dbunit/email_template.dtd">
+<dataset>
+	<email_template id="1" template_id="1" name="Aktywacja konta" description="Szablon wysyłany w trakcie aktywacji konta"
+	    subject="Aktywacja" text="http://host/url?activation_code=${activation_code}" is_html="false"/>
+	<email_template id="2" template_id="2" name="Reset hasła" description="Szablon wysyłany w trakcie resetu hasła"
+	    subject="Reset hasła" text="http://host/url?reset_code=${reset_code}" is_html="false"/>
+	<email_template id="3" template_id="3" name="Usunięcie konta" description="Szablon wysyłany w trakcie usuwania konta"
+	    subject="Usunięcie konta" text="&lt;h1&gt;Tytuł&lt;/h1&gt;&lt;p&gt;Twoje konto zostało usunięte&lt;/p&gt;" is_html="true"/>
+</dataset>

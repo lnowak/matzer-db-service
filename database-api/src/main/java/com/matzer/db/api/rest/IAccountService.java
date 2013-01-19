@@ -34,28 +34,20 @@ public interface IAccountService {
 	 * @return			response with status and data
 	 */
 	@GET
-	@Path("/getAccounts")	
+	@Path("/getAllAccounts")	
 	DataResponse<AccountDto> getAllAccounts(@QueryParam("token") String token);
 	
 	/**
-	 * Gets user with given identifier.
+	 * Gets user with given email.
 	 * 
-	 * @return			response with status and data
+	 * @param token		security token
+	 * @param email		email
+	 * @return			response with data and status
 	 */
 	@GET
-	@Path("/getAccount")
+	@Path("/getAccount")	
 	@RolesAllowed({ AccountTypeHelper.USER })
-	DataResponse<AccountDto> getAccount(@QueryParam("token") String token, @QueryParam("id") long id);
-	
-	/**
-	 * Gets user with given login.
-	 * 
-	 * @return			response with status and data
-	 */
-	@GET
-	@Path("/getAccountByLogin")	
-	@RolesAllowed({ AccountTypeHelper.USER })
-	DataResponse<AccountDto> getAccount(@QueryParam("token") String token, @QueryParam("login") String login);
+	DataResponse<AccountDto> getAccount(@QueryParam("token") String token, @QueryParam("email") String email);
 	
 	/**
 	 * Adds new account.
@@ -65,19 +57,53 @@ public interface IAccountService {
 	 */
 	@PUT
 	@Path("/addAccount")
-	StatusResponse addAccount(@QueryParam("token") String token, AccountDto account);
+	@Unsecured
+	StatusResponse addAccount(AccountDto account);
+	
+	/**
+	 * Resends activation login notification.
+	 * 
+	 * @param email			email
+	 * @return				response with status
+	 */
+	@GET
+	@Path("/resendActivationEmail")
+	@Unsecured
+	StatusResponse resendActivationEmail(@QueryParam("email") String email);
 	
 	/**
 	 * Activates account with activation code and sets password.
 	 * 
 	 * @param activationCode	activation code
-	 * @param password			password to set
 	 * @return					response with status
 	 */
 	@GET
 	@Path("/activateAccount")
 	@Unsecured
-	StatusResponse activateAccount(@QueryParam("activationCode") String activationCode, @QueryParam("password") String password);
+	StatusResponse activateAccount(@QueryParam("activationCode") String activationCode);
+	
+	/**
+	 * Reset password to new one that will be generated randomly and sent by email.
+	 * 
+	 * @param email			email
+	 * @return				response with status
+	 */
+	@GET
+	@Path("/generateResetPasswordCode")
+	@Unsecured
+	StatusResponse generateResetPasswordCode(@QueryParam("email") String email);
+
+	/**
+	 * Accepts reset operation.
+	 * 
+	 * @param resetCode		reset code
+	 * @param password		password to set
+	 * @return				response with status
+	 */
+	@GET
+	@Path("/resetPassword")
+	@Unsecured
+	StatusResponse resetPassword(@QueryParam("resetCode") String resetCode, @QueryParam("password") String password);
 	
 	/**
 	 * Updates account.
@@ -99,5 +125,5 @@ public interface IAccountService {
 	@DELETE
 	@Path("/deleteAccount")
 	@RolesAllowed({ AccountTypeHelper.USER })
-	StatusResponse deleteAccount(@QueryParam("token") String token, @QueryParam("id") long id);
+	StatusResponse deleteAccount(@QueryParam("token") String token, @QueryParam("email") String email);
 }

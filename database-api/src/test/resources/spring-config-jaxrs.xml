@@ -40,7 +40,8 @@
     		    <property name="tokenSecurityHandler">
     		        <ref bean="tokenSecurityHandler" />
     		    </property>
-			</bean>			
+			</bean>
+			<bean class="com.matzer.db.api.rest.impl.AccountService" />			
         </jaxrs:serviceBeans>
         <jaxrs:extensionMappings>
             <entry key="json" value="application/json" />

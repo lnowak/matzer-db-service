@@ -24,9 +24,13 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {	
-		LOG.info("Encoding: " + System.getProperty("file.encoding") + ".");
-		LOG.info("Initializing application...");
-		new ClassPathXmlApplicationContext("classpath:spring-config-jaxrs.xml", "classpath:spring-config-mysql.xml");
-		LOG.info("Application initialized.");
+		if (args.length == 1) {		
+			LOG.info("Encoding: " + System.getProperty("file.encoding") + ".");
+			LOG.info("Initializing application...");
+			new ClassPathXmlApplicationContext("classpath:spring-config-jaxrs.xml", "classpath:" + args[0]);
+			LOG.info("Application initialized.");
+		} else {
+			LOG.error("Missing spring configuration file.");
+		}
 	}
 }

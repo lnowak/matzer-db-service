@@ -2,7 +2,11 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
-      <class name="com.matzer.db.api.MainTest"/>   
+      <class name="com.matzer.db.api.MainTest"/>
+      <class name="com.matzer.db.api.dto.object.AccountDtoTest"/>
+      <class name="com.matzer.db.api.rest.impl.AuthenticationServiceTest"/>
+      <class name="com.matzer.db.api.rest.impl.AccountServiceTest"/>
+      <class name="com.matzer.db.api.service.impl.AccountDtoServiceTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

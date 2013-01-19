@@ -2,7 +2,8 @@
 <suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
-      <class name="com.matzer.db.entity.AccountTest"/>  
+      <class name="com.matzer.db.dao.impl.AccountDaoTest"/>
+      <class name="com.matzer.db.dao.impl.EmailTemplateDaoTest"/>    
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

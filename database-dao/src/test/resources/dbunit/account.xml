@@ -1,6 +1,6 @@
 <!DOCTYPE dataset SYSTEM "src/test/resources/dbunit/account.dtd">
 <dataset>
 	<account id="1"	type="1" first_name="Łukasz" last_name="Nowak" gender="M" province="małopolskie"
-		city="Kraków" birth_date="1982-05-01" email="lkawon@gmail.com" password="password"
+		city="Kraków" birth_date="1982-05-01" email="lkawon@gmail.com" password="5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8"
 		facebook_id="755003683" creation_date="2012-12-16 13:55:00"	modification_date="2012-12-16 13:55:00" />
 </dataset>

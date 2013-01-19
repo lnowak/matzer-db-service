@@ -1,4 +1,4 @@
-package com.matzer.db.object.utils;
+package com.matzer.db.commons.utils;
 
 import java.sql.Timestamp;
 import java.util.Date;

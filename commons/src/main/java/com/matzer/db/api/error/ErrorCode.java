@@ -14,6 +14,67 @@ public enum ErrorCode {
 	 */
 	OK									(0, null),
 	
+	
+	/**
+	 * DTO object is empty.
+	 */
+	EMPTY_DTO_OBJECT					(100, "Received DTO object is empty."),
+	
+	/**
+	 * Email is already used.
+	 */
+	EMAIL_TAKEN							(101, "Email is already used."),
+	
+	/**
+	 * Account was not found.
+	 */
+	ACCOUNT_WAS_NOT_FOUND				(102, "Account was not found."),
+	
+	/**
+	 * Activation code is incorrect.
+	 */
+	ACTIVATION_CODE_IS_INCORRECT		(103, "Activation code is incorrect."),
+	
+	/**
+	 * Activation code is empty.
+	 */
+	ACTIVATION_CODE_IS_EMPTY			(104, "Activation code is empty."),
+	
+	/**
+	 * Entity not found.
+	 */
+	ENTITY_NOT_FOUND					(105, "Entity not found in database."),
+	
+	/**
+	 * Missing parameter.
+	 */
+	MISSING_PARAMETER					(106, "Missing parameter."),
+	
+	/**
+	 * Email template was not found.
+	 */
+	EMAIL_TEMPLATE_WAS_NOT_FOUND		(107, "Email template was not found."),
+	
+	/**
+	 * Missing email client credentials.
+	 */
+	MISSING_EMAIL_CLIENT_CREDENTIALS	(200, "Missing email client credentials."),
+	
+	/**
+	 * Incorrect email adderss.
+	 */
+	INCORRECT_EMAIL_ADDRESS				(201, "Incorrect email adress."),
+	
+	/**
+	 * Unknown error in SMTP client.
+	 */
+	EMAIL_CLIENT_UNKNOWN_ERROR			(202, "Unknown error with SMTP client."),
+	
+	/**
+	 * Missing email client configuration.
+	 */
+	MISSING_EMAIL_CLIENT_CONFIGURATION	(203, "Missing email client configuration."),
+	
 	/**
 	 * The resource is forbidden.
 	 */
@@ -30,14 +91,9 @@ public enum ErrorCode {
 	INVALID_SECURITY_TOKEN				(600, "Security token is invalid or expired."),
 	
 	/**
-	 * Invalid email.
+	 * Invalid email or password.
 	 */
-	INVALID_EMAIL						(601, "Invalid email."),
-	
-	/**
-	 * Invalid password.
-	 */
-	INVALID_PASSWORD					(602, "Invalid password."),
+	INVALID_EMAIL_OR_PASSWORD			(601, "Invalid email or password."),
 	
 	/**
 	 * Missing authentication token.
